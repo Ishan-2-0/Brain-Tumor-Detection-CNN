@@ -1,4 +1,4 @@
-# Brain Tumor Detection — CNN Classifier
+# Brain Tumor Detection  CNN Classifier
 
 Classifies brain MRI scans into four tumor types using convolutional
 neural networks. Built as a comparison study between two architectures
