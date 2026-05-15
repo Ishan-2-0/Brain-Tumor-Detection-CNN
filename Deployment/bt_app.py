@@ -66,10 +66,13 @@ uploaded_file=st.file_uploader(f"Choose MRI scan (JPG/PNG,max {MAX_SIZE_MB}MB)",
 @st.cache_resource
 def load_model():
     try:
-        if not os.path.exists("model_best.pth"):
-            return None,"Model file not found"
+        script_dir=os.path.dirname(os.path.abspath(__file__))
+        model_path=os.path.join(script_dir,"model_best.pth")
+        
+        if not os.path.exists(model_path):
+            return None,f"Model file not found at {model_path}"
         model=ImprovedCNN()
-        model.load_state_dict(torch.load("model_best.pth",map_location=DEVICE))
+        model.load_state_dict(torch.load(model_path,map_location=DEVICE))
         model.to(DEVICE)
         model.eval()
         return model,None
