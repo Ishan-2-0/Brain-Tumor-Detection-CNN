@@ -66,12 +66,12 @@ meningioma/no tumor.
 
 | Property | Details |
 |----------|---------|
-| Source | Kaggle — Brain Tumor MRI Classification |
+| Source | Kaggle Brain Tumor MRI Classification |
 | Training images | 5,600 |
 | Test images | 1,600 |
-| Classes | glioma, meningioma, pituitary, notumor (balanced) |
+| Classes | glioma, meningioma, pituitary, notumor |
 | Resolution | 128×128 pixels |
-| Normalization | Mean 0.5, Std 0.5 (range: −1 to 1) |
+| Normalization | Mean 0.5, Std 0.5 (range: -1 to 1) |
 | Augmentation | None |
 
 ---
@@ -84,7 +84,7 @@ Two models. Same structure. Different regularization.
 - 3 conv blocks: 32, 64, 128 filters (kernel=3,padding=1,ReLU)
 - Max pooling after each block (2*2)
 - Flatten to 32,768 to FC(256) to FC(4)
-- No batch norm. No dropout.
+- No batch norm. No dropout
 
 **ImprovedCNN**
 - Same conv structure + BatchNorm2d after each conv layer
@@ -185,7 +185,7 @@ PyTorch 2.x · CUDA (CPU fallback) · Streamlit
 
 - Trained on a single Kaggle dataset generalization to other imaging
   protocols, scanner manufacturers, or patient populations is unknown
-- 128×128 resolution is downsampled high-resolution tumor details lost
+- 128×128 resolution is downsampled high resolution tumor details lost
 - Balanced classes don't reflect real clinical distribution
 - Test set from same source as training data no external validation
 - 88% accuracy is not clinical-grade use only as a screening tool
